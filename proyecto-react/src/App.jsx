@@ -1,65 +1,26 @@
-import Header from "./components/Header.jsx"
-import TareaItem from "./components/TareaItem.jsx"
-import Pie from "./components/Pie.jsx"
-import FichaProyecto from "./components/FichaProyecto.jsx"
-import { useState } from "react";
+import { useAuth } from "./context/AuthContext"
+import { Routes, Route, Router } from "react-router";
+import Login from "./pages/Login";
+import PanelAdmin from "./pages/PanelAdmin";
+import PanelProfesor from "./pages/PanelProfesor";
+import PanelAlumno from "./pages/PanelAlumno";
+
 
 function App() {
+  const {cargando} = useAuth()
 
-  const modulos = 4;
-  const modulosRealizados = 3;
-  const [listaTareas, setListaTareas] = useState([
-    { id: 1, texto: "Tarea 1 ", realizada: true },
-    { id: 2, texto: "Tarea 2 ", realizada: true },
-    { id: 3, texto: "Tarea 3 ", realizada: false }
-  ])
+  if (cargando) return <p>Cargando...</p>
+    
+    return( 
+    <Routes>
+      <Route path="/" element={<Login  />} />
+      <Route path="/admin" element={<PanelAdmin />} />
+      <Route path="/alumno" element={<PanelAlumno />} />
+      <Route path="/profesor" element={<PanelProfesor />} />
+      <Route path="*" element={<h1>Página not found</h1>} />
+    </Routes>
 
-  function CambiarEstado(id) {
-
-    setListaTareas(listaTareas.map((tarea) =>
-      tarea.id === id
-        ? { ...tarea, realizada: !tarea.realizada }
-        : tarea
-    ))
-  }
-
-
-
-  const proyectos = [
-    { id: 1, projectName: 'AprenTIC Full Stack', completedTasks: 4, totalTasks: 4 },
-    { id: 2, projectName: 'TaskFlow API', completedTasks: 3, totalTasks: 8 },
-    { id: 3, projectName: 'Portfolio personal', completedTasks: 0, totalTasks: 5 }
-  ]
-
-  return (
-    // Elemento raíz
-    <>
-      <Header />
-
-      <p>Son {modulos} modulos totales y me queda {modulos - modulosRealizados} modulo</p>
-
-
-
-      {proyectos.map(proyecto => {
-        return(
-        <FichaProyecto
-          key={proyecto.id}
-          projectName={proyecto.projectName}
-          completedTasks={proyecto.completedTasks}
-          totalTasks={proyecto.totalTasks} />)
-      })
-      }
-      {listaTareas.map(tarea => {
-        return(
-        <TareaItem
-          key={tarea.id}
-          texto={tarea.texto}
-          realizada={tarea.realizada}
-          onToggle={() => CambiarEstado(tarea.id)} />)
-      })}
-
-      <Pie />
-    </>
-  )
+  );
 }
-export default App
+
+export default App;

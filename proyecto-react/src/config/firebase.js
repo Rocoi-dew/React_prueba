@@ -1,17 +1,18 @@
-
 import { initializeApp } from "firebase/app";
-import { getFireStore } from "firebase/firestore";
-import { getAuth } from "firebase/Auth";
+import { getFirestore } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAXS-KqQAU6AFX1O6P--m0f50rQ0asBH_8",
-  authDomain: "pruebaproyectofinal-f91f8.firebaseapp.com",
-  projectId: "pruebaproyectofinal-f91f8",
-  storageBucket: "pruebaproyectofinal-f91f8.firebasestorage.app",
-  messagingSenderId: "314121538089",
-  appId: "1:314121538089:web:ac5a3f3b187f809785ea38"
+  apiKey: "AIzaSyCymeEm-ainUiEugXxWzy2OOmqp9sj1HV8",
+  authDomain: "pruebarokio.firebaseapp.com",
+  projectId: "pruebarokio",
+  storageBucket: "pruebarokio.firebasestorage.app",
+  messagingSenderId: "526681666524",
+  appId: "1:526681666524:web:645a2c6094d6da48f81519",
+  measurementId: "G-V0N5S7T1HQ",
 };
 
 const app = initializeApp(firebaseConfig);
-export const db = getFireStore(app);
+
 export const auth = getAuth(app);
+export const db = getFirestore(app);

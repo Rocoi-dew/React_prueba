@@ -1,20 +1,24 @@
-// TODO 2: que devuelva un <li> con un <span> (texto de la tarea) y un <strong> (estado)
+function TareaItem({ texto, realizada = false, onToggle, onDelete }) {
+  const progresoTarea = realizada ? 100 : 0;
 
-function TareaItem ({texto, realizada = false, onToggle}) {
+  return (
+    <li>
+      <div>
+        <span>{texto}</span>
 
-    return (
-    <> 
-      
-        <li onClick = {onToggle}>
-          <span> {texto} </span>
-          <strong> {realizada
-          ? "Completada" 
-          : "Pendiente" } </strong>
-        </li>
-    
-    </>
-  )
+        <strong onClick={onToggle}>
+          {realizada ? "Completada" : "Pendiente"}
+        </strong>
+
+        <button onClick={onDelete}>Eliminar</button>
+      </div>
+
+      <div>
+        <progress value={progresoTarea} max="100"></progress>
+        <span>{progresoTarea}%</span>
+      </div>
+    </li>
+  );
 }
 
-
-export default TareaItem;
+export default TareaItem

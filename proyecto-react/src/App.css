@@ -182,3 +182,94 @@
     border-right-color: var(--border);
   }
 }
+
+/* semaforos */
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  box-sizing: border-box;
+  background: linear-gradient(135deg, #0f172a, #111827, #1e293b);
+}
+
+.traffic-light {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.light {
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+}
+
+.light-off {
+  background-color: #6b7280;
+}
+
+.light-red {
+  background-color: #ef4444;
+  animation: pulse 2s infinite;
+}
+
+.light-yellow {
+  background-color: #eab308;
+  animation: pulse 2s infinite;
+}
+
+.light-green {
+  background-color: #22c55e;
+  animation: pulse 2s infinite;
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.button {
+  border: 0;
+  border-radius: 6px;
+  padding: 8px 16px;
+  color: #ffffff;
+  font: inherit;
+  cursor: pointer;
+}
+
+.button-red {
+  background-color: #ef4444;
+}
+
+.button-yellow {
+  background-color: #eab308;
+}
+
+.button-green {
+  background-color: #22c55e;
+}
+
+.button:hover {
+  filter: brightness(1.08);
+}
+
+.button:active {
+  transform: translateY(1px);
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+}
